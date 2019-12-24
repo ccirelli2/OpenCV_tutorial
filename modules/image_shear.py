@@ -32,10 +32,14 @@ m[:,2] = 255
 
 
 # Define Matrix for Affine Transformation
+'''Form      1 0
+             0 1
+'''
+I   = np.array([[1,0], [0,1]])
+T1  = np.array([[1,3], [0,1]])
 
-T   = np.array([1,3], [0,1])
 
-
+print(T)
 
 
 
@@ -92,10 +96,24 @@ def apply_affine_tranf_2_nparray(list_of_list_of_tuples, matrix_transformer):
     ''' Desc:   Applies a transformation of the form T(u) where T is a matrix
                 and u is the location of the pixel in the image. 
                 The purpose is to create an affine transformation of an image. 
+        Output: Same Object Structure w/ new row/col assignments for each pixel
     '''
-    
+    # Row Count
+    row_count   = -1
 
+    # Iterate Rows of list of list of tuples
+    for row in list_of_list_of_tuples:
+        row_count +=1
 
+        # Col Count
+        col_count   = -1
+
+        # Iterate Columns
+        for col in row:
+            col_count += 1
+
+            # Apply Transformation
+            'You should code this to accomodate any dimension size obj'
 
 
     pass
