@@ -59,20 +59,21 @@ def translate_img(img):
 
 
 
-def rotate_img(img):
+def rotate_img(img, degree, show_original=False):
     # Read Image
     img_read    = cv2.imread(img, cv2.IMREAD_GRAYSCALE)
     # Get Height and Width (note, need to read in as b&w or shape is diff)
     height, width   = img_read.shape
     # Divide height and width by 2 to get the center point of the image
     'cv2.getRotationMatrix2D(rotation_center_x, rotation_center_y, angle of  rotation, scale)'
-    rotation_matrix = cv2.getRotationMatrix2D((width/2, height/2), 15, 1)
+    rotation_matrix = cv2.getRotationMatrix2D((width/2, height/2), degree, 1)
     # Apply warpAffine to rotate
     rotated_img     = cv2.warpAffine(img_read, rotation_matrix, (width, height))
 
     # Show original image
-    cv2.imshow('Original', img_read)
-    cv2.waitKey(0)
+    if show_original == True:
+        cv2.imshow('Original', img_read)
+        cv2.waitKey(0)
      
     # Show Rotated Image
     cv2.imshow('Rotated', rotated_img)
@@ -80,10 +81,13 @@ def rotate_img(img):
     cv2.destroyAllWindows()
 
     # Return rotated image
-    return 
+    return  img 
 
-rotate_img(img2)
 
+degree  = 10
+for i in range(0,10):
+    img1 = rotate_img(img2,degree, False)
+    degree +=10
 
 
 
